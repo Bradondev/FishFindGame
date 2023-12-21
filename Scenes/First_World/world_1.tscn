@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq42jnf64bfsv"]
+
+[ext_resource type="Script" path="res://Scenes/First_World/world_1.gd" id="1_q5sfl"]
+[ext_resource type="Script" path="res://Scenes/First_World/Camera3D.gd" id="2_udlyc"]
+[ext_resource type="Script" path="res://Scenes/First_World/Larry.gd" id="2_yss2a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cmgii"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hr0b"]
+albedo_color = Color(0.890196, 0.215686, 0.219608, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ik0fy"]
+material = SubResource("StandardMaterial3D_3hr0b")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o430d"]
+
+[node name="World_1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.837681, 0, 0.54616, 0, 1, 0, -0.54616, 0, 0.837681, 0, 1.29997, 0.487941)
+
+[node name="Example_square" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_cmgii")
+script = ExtResource("1_q5sfl")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 1.82667, 2.572)
+script = ExtResource("2_udlyc")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.135647, -0.990758, 0, 0.990758, 0.135647, 0, 0, 0)
+target_position = Vector3(0, -5, 0)
+
+[node name="Larry" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.617489, 0)
+mesh = SubResource("CapsuleMesh_ik0fy")
+script = ExtResource("2_yss2a")
+
+[node name="Area3D" type="Area3D" parent="Larry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Larry/Area3D"]
+shape = SubResource("CapsuleShape3D_o430d")
+
+[connection signal="input_event" from="Larry/Area3D" to="Larry" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Larry/Area3D" to="Larry" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Larry/Area3D" to="Larry" method="_on_area_3d_mouse_exited"]
