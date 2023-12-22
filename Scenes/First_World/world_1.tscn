@@ -1,10 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dq42jnf64bfsv"]
 
-[ext_resource type="Script" path="res://Scenes/First_World/world_1.gd" id="1_q5sfl"]
-[ext_resource type="Script" path="res://Scenes/First_World/Camera3D.gd" id="2_udlyc"]
-[ext_resource type="Script" path="res://Scenes/First_World/Larry.gd" id="2_yss2a"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_cmgii"]
+[ext_resource type="Script" path="res://code/world_1.gd" id="1_q5sfl"]
+[ext_resource type="Script" path="res://code/Camera3D.gd" id="2_udlyc"]
+[ext_resource type="Script" path="res://code/Larry.gd" id="2_yss2a"]
+[ext_resource type="PackedScene" uid="uid://cl2a725i6pww2" path="res://Art/3DModel/Level1.tscn" id="3_ksqpm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hr0b"]
 albedo_color = Color(0.890196, 0.215686, 0.219608, 1)
@@ -15,33 +14,27 @@ material = SubResource("StandardMaterial3D_3hr0b")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o430d"]
 
 [node name="World_1" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.837681, 0, 0.54616, 0, 1, 0, -0.54616, 0, 0.837681, 0, 1.29997, 0.487941)
 
-[node name="Example_Square" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_cmgii")
-script = ExtResource("1_q5sfl")
-
 [node name="Main_Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 1.82667, 2.572)
+transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 2.39618, 8.27214)
 script = ExtResource("2_udlyc")
 
-[node name="RayCast3D" type="RayCast3D" parent="Main_Camera"]
-transform = Transform3D(1, 0, 0, 0, 0.135647, -0.990758, 0, 0.990758, 0.135647, 0, 0, 0)
-target_position = Vector3(0, -4, 0)
+[node name="Level1" parent="." instance=ExtResource("3_ksqpm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+script = ExtResource("1_q5sfl")
 
-[node name="Find_Object" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.617489, 0)
+[node name="Find_Object" type="MeshInstance3D" parent="Level1"]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -2.40316, 0.251984, -0.427042)
 mesh = SubResource("CapsuleMesh_ik0fy")
+skeleton = NodePath("../..")
 script = ExtResource("2_yss2a")
 
-[node name="Area3D" type="Area3D" parent="Find_Object"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="Area3D" type="Area3D" parent="Level1/Find_Object"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Find_Object/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1/Find_Object/Area3D"]
 shape = SubResource("CapsuleShape3D_o430d")
 
-[connection signal="input_event" from="Find_Object/Area3D" to="Find_Object" method="_on_area_3d_input_event"]
+[connection signal="input_event" from="Level1/Find_Object/Area3D" to="Level1/Find_Object" method="_on_area_3d_input_event"]

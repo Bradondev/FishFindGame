@@ -22,4 +22,20 @@ func _input(event):
 			desired_Fov = desired_Fov - fov_Step
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			desired_Fov = desired_Fov + fov_Step
+	if event.is_action_pressed("click_find"):
+		ShootRay()
+
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func ShootRay():
+	var Mouse_pos = get_viewport().get_mouse_position()
+	var ray_Length = 10000
+	var from = project_ray_origin(Mouse_pos)
+	var to = from + project_ray_normal(Mouse_pos) * ray_Length
+	var space = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	var raycast_result = space.intersect_point(ray_query)
+	print(raycast_result)
 

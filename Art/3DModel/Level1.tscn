@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl2a725i6pww2"]
+
+[ext_resource type="PackedScene" uid="uid://cwf00dp177g4j" path="res://Art/3DModel/lifeplace.gltf" id="1_dnsjq"]
+[ext_resource type="PackedScene" uid="uid://bmwqbn5dsayrs" path="res://Art/2DModels/Object_382.gltf" id="2_8i3sh"]
+[ext_resource type="PackedScene" uid="uid://bjyqhjj08y8fo" path="res://Art/2DModels/Object_402.gltf" id="3_pr8fc"]
+[ext_resource type="PackedScene" uid="uid://by6qgmpvyynyg" path="res://Art/2DModels/Object_446.gltf" id="4_s1rcq"]
+[ext_resource type="PackedScene" uid="uid://b8ryvkm7wj2xs" path="res://Art/2DModels/Object_480.gltf" id="5_n5i7g"]
+
+[node name="Level1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295528, 0.0607696, -0.779537)
+
+[node name="default2" parent="." instance=ExtResource("1_dnsjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.22173, 0, 1.86143)
+
+[node name="default" parent="." instance=ExtResource("2_8i3sh")]
+transform = Transform3D(0.759646, 0, -0.650337, 0, 1, 0, 0.650337, 0, 0.759646, -4.34652, -1.7301, 0.484455)
+
+[node name="default3" parent="." instance=ExtResource("3_pr8fc")]
+transform = Transform3D(0.842198, 0, 0.539168, 0, 1, 0, -0.539168, 0, 0.842198, -1.82542, -1.0669, -0.478964)
+
+[node name="default4" parent="." instance=ExtResource("4_s1rcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50182, -2.55732, -1.45221)
+
+[node name="default5" parent="." instance=ExtResource("5_n5i7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.242825, -0.0607696, -1.66974)
+
+[node name="default6" parent="." instance=ExtResource("2_8i3sh")]
+transform = Transform3D(0.741205, 0, 0, 0, 0.802683, 0, 0, 0, 0.913139, 1.99812, -1.51621, 0.223691)
