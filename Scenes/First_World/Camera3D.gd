@@ -15,5 +15,11 @@ func _physics_process(delta):
 	desired_Fov = clamp(desired_Fov, min_Fov, max_Fov)
 	Fov_Smooth = lerp(Fov_Smooth, desired_Fov, 0.2)
 	self.set_fov(Fov_Smooth)
-	
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			desired_Fov = desired_Fov - fov_Step
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			desired_Fov = desired_Fov + fov_Step
 
