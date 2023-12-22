@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/First_World/world_1.gd" id="1_q5sfl"]
 [ext_resource type="Script" path="res://Scenes/First_World/Camera3D.gd" id="2_udlyc"]
-[ext_resource type="Script" path="res://Scenes/First_World/Larry.gd" id="2_yss2a"]
+[ext_resource type="Script" path="res://Scenes/First_World/Find.gd" id="2_yss2a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cmgii"]
 
@@ -15,13 +15,11 @@ material = SubResource("StandardMaterial3D_3hr0b")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o430d"]
 
 [node name="World_1" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.837681, 0, 0.54616, 0, 1, 0, -0.54616, 0, 0.837681, 0, 1.29997, 0.487941)
 
 [node name="Example_Square" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_cmgii")
 script = ExtResource("1_q5sfl")
 
@@ -39,7 +37,6 @@ mesh = SubResource("CapsuleMesh_ik0fy")
 script = ExtResource("2_yss2a")
 
 [node name="Area3D" type="Area3D" parent="Find_Object"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Find_Object/Area3D"]
 shape = SubResource("CapsuleShape3D_o430d")
