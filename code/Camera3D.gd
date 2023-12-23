@@ -6,6 +6,7 @@ extends Camera3D
 @export var min_Fov = 45
 var Fov_Smooth : int = 70
 
+
 func _physics_process(delta):
 	if Input.is_action_pressed("zoom_in"):
 		desired_Fov = desired_Fov - fov_Step
@@ -24,6 +25,7 @@ func _input(event):
 			desired_Fov = desired_Fov + fov_Step
 	if event.is_action_pressed("click_find"):
 		ShootRay()
+		
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,6 +38,8 @@ func ShootRay():
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
-	var raycast_result = space.intersect_point(ray_query)
-	print(raycast_result)
-
+	#var raycast_result = space.intersect_point(ray_query)
+	#if raycast_result == null:
+	#	print("error")
+	#else:
+		#print(raycast_result)
