@@ -38,8 +38,4 @@ func ShootRay():
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
-	#var raycast_result = space.intersect_point(ray_query)
-	#if raycast_result == null:
-	#	print("error")
-	#else:
-		#print(raycast_result)
+	$AudioStreamPlayer.play()

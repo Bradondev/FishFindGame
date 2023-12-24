@@ -1,19 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq42jnf64bfsv"]
+[gd_scene load_steps=16 format=3 uid="uid://dq42jnf64bfsv"]
 
 [ext_resource type="Script" path="res://code/world_1.gd" id="1_q5sfl"]
+[ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://Sounds/click-menu-app-147357.mp3" id="2_f7uw5"]
 [ext_resource type="Script" path="res://code/Camera3D.gd" id="2_udlyc"]
-[ext_resource type="Script" path="res://code/Larry.gd" id="2_yss2a"]
 [ext_resource type="PackedScene" uid="uid://cl2a725i6pww2" path="res://Art/3DModel/Level1.tscn" id="3_ksqpm"]
-[ext_resource type="PackedScene" uid="uid://cmx0eu1x0u6ho" path="res://list_of_names.tscn" id="4_v7h54"]
+[ext_resource type="PackedScene" uid="uid://cmx0eu1x0u6ho" path="res://Scenes/Ui/list_of_names.tscn" id="4_v7h54"]
 [ext_resource type="Script" path="res://Scenes/First_World/FindItemList.gd" id="5_5j5hq"]
+[ext_resource type="PackedScene" uid="uid://cpduu6l1x4e3l" path="res://Scenes/FindItem/find_object.tscn" id="7_66b5o"]
+[ext_resource type="Texture2D" uid="uid://ddkt0ft32h0j5" path="res://Art/2DArt/FROG.png" id="7_nc1h8"]
+[ext_resource type="Texture2D" uid="uid://b15olp1efeeng" path="res://Art/2DArt/grayfrogFROG.png" id="8_7yh7h"]
+[ext_resource type="PackedScene" uid="uid://bkv87da5hnjxx" path="res://Scenes/First_World/rain.tscn" id="9_mg3rv"]
+[ext_resource type="Texture2D" uid="uid://dmo4gropuejeo" path="res://Art/2DArt/demo02_PixelSky.png" id="10_roqao"]
+[ext_resource type="AudioStream" uid="uid://bo6uk8xg7saml" path="res://Sounds/game-music-loop-7-145285.mp3" id="11_by5vk"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hr0b"]
-albedo_color = Color(0.890196, 0.215686, 0.219608, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3thpo"]
+panorama = ExtResource("10_roqao")
+filter = false
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ik0fy"]
-material = SubResource("StandardMaterial3D_3hr0b")
+[sub_resource type="Sky" id="Sky_cy4rd"]
+sky_material = SubResource("PanoramaSkyMaterial_3thpo")
+process_mode = 1
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o430d"]
+[sub_resource type="Environment" id="Environment_w48ql"]
+background_mode = 2
+sky = SubResource("Sky_cy4rd")
+volumetric_fog_density = 0.205
+volumetric_fog_emission_energy = 635.88
+volumetric_fog_gi_inject = 5.35
+volumetric_fog_detail_spread = 5.04538
 
 [node name="World_1" type="Node3D"]
 
@@ -23,6 +37,11 @@ transform = Transform3D(0.837681, 0, 0.54616, 0, 1, 0, -0.54616, 0, 0.837681, 0,
 [node name="Main_Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 2.39618, 8.27214)
 script = ExtResource("2_udlyc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Main_Camera"]
+stream = ExtResource("2_f7uw5")
+volume_db = 0.35
+pitch_scale = 2.0
 
 [node name="Level1" parent="." instance=ExtResource("3_ksqpm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
@@ -34,46 +53,32 @@ script = ExtResource("1_q5sfl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 script = ExtResource("5_5j5hq")
 
-[node name="Find_Object" type="MeshInstance3D" parent="Level1/FindItemList"]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -1.40316, 0.251984, 0.572958)
-mesh = SubResource("CapsuleMesh_ik0fy")
-skeleton = NodePath("../../..")
-script = ExtResource("2_yss2a")
-Name = "Frog"
+[node name="Frog" parent="Level1/FindItemList" instance=ExtResource("7_66b5o")]
+transform = Transform3D(2.30498, 0, 0.295066, 0, 3.058, 0, -1.92017, 0, 0.354199, -1.65875, 0.333979, 0.489833)
+Name = "Blue frog"
 
-[node name="Area3D" type="Area3D" parent="Level1/FindItemList/Find_Object"]
+[node name="Frog2" parent="Level1/FindItemList" instance=ExtResource("7_66b5o")]
+transform = Transform3D(0.691423, 0, 0.448589, 0, 3.058, 0, -2.91923, 0, 0.106249, 3.75172, 0.280868, 0.942801)
+texture = ExtResource("7_nc1h8")
+Name = "Green frog"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1/FindItemList/Find_Object/Area3D"]
-shape = SubResource("CapsuleShape3D_o430d")
+[node name="Frog3" parent="Level1/FindItemList" instance=ExtResource("7_66b5o")]
+transform = Transform3D(2.12154, 0, 0.325942, 0, 3.058, 0, -2.1211, 0, 0.32601, -0.0725107, -1.48002, 4.54836)
+texture = ExtResource("8_7yh7h")
+Name = "Gray frog"
 
-[node name="Find_Object2" type="MeshInstance3D" parent="Level1/FindItemList"]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 3.85803, -3.10589, 5.57874)
-mesh = SubResource("CapsuleMesh_ik0fy")
-skeleton = NodePath("../../..")
-script = ExtResource("2_yss2a")
-Name = "Fish"
+[node name="Node3D" parent="." instance=ExtResource("9_mg3rv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.671488, 2.43399, 0.366191)
 
-[node name="Area3D" type="Area3D" parent="Level1/FindItemList/Find_Object2"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w48ql")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1/FindItemList/Find_Object2/Area3D"]
-shape = SubResource("CapsuleShape3D_o430d")
-
-[node name="Find_Object3" type="MeshInstance3D" parent="Level1/FindItemList"]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -1.9031, -3.10589, 5.57874)
-mesh = SubResource("CapsuleMesh_ik0fy")
-skeleton = NodePath("../../..")
-script = ExtResource("2_yss2a")
-Name = "cat"
-
-[node name="Area3D" type="Area3D" parent="Level1/FindItemList/Find_Object3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level1/FindItemList/Find_Object3/Area3D"]
-shape = SubResource("CapsuleShape3D_o430d")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_by5vk")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="AddToList" from="Level1/FindItemList" to="Level1/ListOfNames/ListOfNames" method="_on_find_item_list_add_to_list"]
 [connection signal="CreateArraryForObjectsForUi" from="Level1/FindItemList" to="Level1/ListOfNames/ListOfNames" method="_on_find_item_list_create_arrary_for_objects_for_ui"]
-[connection signal="input_event" from="Level1/FindItemList/Find_Object/Area3D" to="Level1/FindItemList/Find_Object" method="_on_area_3d_input_event"]
-[connection signal="input_event" from="Level1/FindItemList/Find_Object2/Area3D" to="Level1/FindItemList/Find_Object2" method="_on_area_3d_input_event"]
-[connection signal="input_event" from="Level1/FindItemList/Find_Object3/Area3D" to="Level1/FindItemList/Find_Object3" method="_on_area_3d_input_event"]
 
 [editable path="Level1/ListOfNames"]

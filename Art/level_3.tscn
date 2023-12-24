@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3our18h05umn"]
+
+[ext_resource type="PackedScene" uid="uid://donmmb2h6l5bx" path="res://Art/3DModel/spaceRock.gltf" id="1_qavpb"]
+
+[node name="Level3" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.466093, 0)
+
+[node name="default2" parent="." instance=ExtResource("1_qavpb")]

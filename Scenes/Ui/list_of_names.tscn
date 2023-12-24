@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmx0eu1x0u6ho"]
 
-[ext_resource type="Script" path="res://List.gd" id="1_m1iqu"]
-[ext_resource type="PackedScene" uid="uid://dbnh560h1j0ph" path="res://LabelForList.tscn" id="2_2qjq8"]
+[ext_resource type="Script" path="res://code/List.gd" id="1_m1iqu"]
+[ext_resource type="PackedScene" uid="uid://dbnh560h1j0ph" path="res://Scenes/Ui/LabelForList.tscn" id="2_2qjq8"]
 
 [node name="ui" type="CanvasLayer"]
 
@@ -9,8 +9,10 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -951.0
-offset_bottom = -283.0
+offset_left = 36.0
+offset_top = 2.0
+offset_right = -57.0
+offset_bottom = -98.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 4

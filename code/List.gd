@@ -25,4 +25,4 @@ func _on_find_item_list_create_arrary_for_objects_for_ui():
 
 
 func _on_find_item_list_cross_out_label(Index):
-	ArrayOfLabals[Index].visible = false
+	ArrayOfLabals[Index].CrossOut()

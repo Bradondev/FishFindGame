@@ -16,7 +16,10 @@ func _process(delta):
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed("click_find"):
+			if Found != true:
+				$AudioStreamPlayer.play()
+				$AnimationPlayer.play("dance")
+				emit_signal("CrossOutLabel",get_parent().ObjectsGetttingLookedFor.find(self))
 			Found = true
 			print("finded")
 			emit_signal("CheckIfAllObjectsWereFound")
-			emit_signal("CrossOutLabel",get_parent().ObjectsGetttingLookedFor.find(self))
