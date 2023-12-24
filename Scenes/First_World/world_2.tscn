@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6rtyt8gwuomd"]
+[gd_scene load_steps=17 format=3 uid="uid://c6rtyt8gwuomd"]
 
 [ext_resource type="Script" path="res://code/Camera3D.gd" id="1_7s71v"]
 [ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://Sounds/click-menu-app-147357.mp3" id="2_k13iu"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b15olp1efeeng" path="res://Art/2DArt/grayfrogFROG.png" id="9_ljn6i"]
 [ext_resource type="PackedScene" uid="uid://bkv87da5hnjxx" path="res://Scenes/First_World/rain.tscn" id="10_ofbyk"]
 [ext_resource type="AudioStream" uid="uid://bo6uk8xg7saml" path="res://Sounds/game-music-loop-7-145285.mp3" id="12_tfx71"]
+[ext_resource type="PackedScene" uid="uid://dvb4x6t638as1" path="res://Scenes/Ui/win_panel.tscn" id="13_gqgle"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3thpo"]
 panorama = ExtResource("4_0ykiw")
@@ -29,7 +30,7 @@ volumetric_fog_emission_energy = 635.88
 volumetric_fog_gi_inject = 5.35
 volumetric_fog_detail_spread = 5.04538
 
-[node name="World_1" type="Node3D"]
+[node name="World_2" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.837681, 0, 0.54616, 0, 1, 0, -0.54616, 0, 0.837681, 0, 1.29997, 0.487941)
@@ -59,26 +60,32 @@ autoplay = true
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.494892, -1.21459, -0.0750952)
 script = ExtResource("9_axgwh")
 
-[node name="FindItemList" type="Node3D" parent="Level3"]
+[node name="win_panel" parent="Level3" instance=ExtResource("13_gqgle")]
+visible = false
+
+[node name="FindItemList" type="Node3D" parent="Level3" node_paths=PackedStringArray("win_panel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85945, 0, -9.39037)
 script = ExtResource("6_ef1wv")
+win_panel = NodePath("../win_panel")
 
 [node name="Frog" parent="Level3/FindItemList" instance=ExtResource("7_dnn5t")]
-transform = Transform3D(-1.85295, -1.81884, -0.2372, 1.37096, -2.45829, 0.1755, -1.92017, -3.64542e-07, 0.354199, 1.03691, -0.918306, 9.55754)
+transform = Transform3D(-1.85295, -1.81884, -0.2372, 1.37096, -2.45829, 0.1755, -1.92017, 2.73407e-07, 0.354199, 1.03691, -0.918306, 9.55754)
 Name = "Blue frog"
 
 [node name="Frog2" parent="Level3/FindItemList" instance=ExtResource("7_dnn5t")]
-transform = Transform3D(-2.72948, -1.17123, -0.07364, -1.13171, 2.82482, -0.0305328, 0.518777, 6.83516e-08, -0.454055, 1.38901, 1.06124, 9.25508)
+transform = Transform3D(-2.72948, -1.17124, -0.0736401, -1.13171, 2.82482, -0.0305327, 0.518777, 1.54931e-06, -0.454055, 1.38901, 1.06124, 9.25508)
 texture = ExtResource("8_xeqp8")
 Name = "Green frog"
 
 [node name="Frog3" parent="Level3/FindItemList" instance=ExtResource("7_dnn5t")]
-transform = Transform3D(2.12154, -1.82271e-07, 0.325942, -1.75048, 1.72696, 0.269047, -1.19786, -2.52368, 0.18411, 1.59221, 1.57993, 8.73782)
+transform = Transform3D(2.12154, -1.73157e-06, 0.325942, -1.75048, 1.72696, 0.269047, -1.19786, -2.52368, 0.184109, 1.59221, 1.57993, 8.73782)
 texture = ExtResource("9_ljn6i")
 Name = "Gray frog"
 
 [node name="ListOfNames" parent="Level3" instance=ExtResource("5_27p28")]
 
+[connection signal="menu" from="Level3/win_panel" to="Level3/FindItemList" method="_on_win_panel_menu"]
+[connection signal="next" from="Level3/win_panel" to="Level3/FindItemList" method="_on_win_panel_next"]
 [connection signal="AddToList" from="Level3/FindItemList" to="Level3/ListOfNames/ListOfNames" method="_on_find_item_list_add_to_list"]
 [connection signal="CreateArraryForObjectsForUi" from="Level3/FindItemList" to="Level3/ListOfNames/ListOfNames" method="_on_find_item_list_create_arrary_for_objects_for_ui"]
 

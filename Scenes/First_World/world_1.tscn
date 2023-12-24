@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dq42jnf64bfsv"]
+[gd_scene load_steps=17 format=3 uid="uid://dq42jnf64bfsv"]
 
 [ext_resource type="Script" path="res://code/world_1.gd" id="1_q5sfl"]
 [ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://Sounds/click-menu-app-147357.mp3" id="2_f7uw5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bkv87da5hnjxx" path="res://Scenes/First_World/rain.tscn" id="9_mg3rv"]
 [ext_resource type="Texture2D" uid="uid://dmo4gropuejeo" path="res://Art/2DArt/demo02_PixelSky.png" id="10_roqao"]
 [ext_resource type="AudioStream" uid="uid://bo6uk8xg7saml" path="res://Sounds/game-music-loop-7-145285.mp3" id="11_by5vk"]
+[ext_resource type="PackedScene" uid="uid://dvb4x6t638as1" path="res://Scenes/Ui/win_panel.tscn" id="13_xgmhp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3thpo"]
 panorama = ExtResource("10_roqao")
@@ -49,9 +50,13 @@ script = ExtResource("1_q5sfl")
 
 [node name="ListOfNames" parent="Level1" instance=ExtResource("4_v7h54")]
 
-[node name="FindItemList" type="Node3D" parent="Level1"]
+[node name="win_panel" parent="Level1" instance=ExtResource("13_xgmhp")]
+visible = false
+
+[node name="FindItemList" type="Node3D" parent="Level1" node_paths=PackedStringArray("win_panel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 script = ExtResource("5_5j5hq")
+win_panel = NodePath("../win_panel")
 
 [node name="Frog" parent="Level1/FindItemList" instance=ExtResource("7_66b5o")]
 transform = Transform3D(2.30498, 0, 0.295066, 0, 3.058, 0, -1.92017, 0, 0.354199, -1.65875, 0.333979, 0.489833)
@@ -78,6 +83,8 @@ stream = ExtResource("11_by5vk")
 volume_db = -10.0
 autoplay = true
 
+[connection signal="menu" from="Level1/win_panel" to="Level1/FindItemList" method="_on_win_panel_menu"]
+[connection signal="next" from="Level1/win_panel" to="Level1/FindItemList" method="_on_win_panel_next"]
 [connection signal="AddToList" from="Level1/FindItemList" to="Level1/ListOfNames/ListOfNames" method="_on_find_item_list_add_to_list"]
 [connection signal="CreateArraryForObjectsForUi" from="Level1/FindItemList" to="Level1/ListOfNames/ListOfNames" method="_on_find_item_list_create_arrary_for_objects_for_ui"]
 
