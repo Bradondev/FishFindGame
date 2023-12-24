@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c416uhah0xdtt"
-path="res://.godot/imported/snowplace_0.png-51b43aba35ae9ef72c326c571c856ec1.ctex"
+uid="uid://841n8fn68wqa"
+path="res://.godot/imported/[3] Hover.png-6097e072cdcb7d88bc88a2ddc28fec9d.ctex"
 metadata={
 "vram_texture": false
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://Art/3DModel/snowplace_0.png"
-dest_files=["res://.godot/imported/snowplace_0.png-51b43aba35ae9ef72c326c571c856ec1.ctex"]
+source_file="res://Art/2DArt/[3] Hover.png"
+dest_files=["res://.godot/imported/[3] Hover.png-6097e072cdcb7d88bc88a2ddc28fec9d.ctex"]
 
 [params]
 

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://iabkr7ttk67w"]
+
+[ext_resource type="PackedScene" uid="uid://cp75r2qgxfkq4" path="res://Art/3DModel/snowplace.gltf" id="1_tm5nh"]
+
+[node name="level2" type="Node3D"]
+
+[node name="default2" parent="." instance=ExtResource("1_tm5nh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109824, 0, -1.46495)

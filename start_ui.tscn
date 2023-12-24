@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://o61e5ue6fjnw"]
+
+[ext_resource type="FontFile" uid="uid://87n7xlnb7uyt" path="res://upheavtt.ttf" id="1_ekbim"]
+[ext_resource type="Texture2D" uid="uid://ck01g0m8x1ote" path="res://Art/2DArt/[1] Normal.png" id="2_spgmb"]
+[ext_resource type="Texture2D" uid="uid://841n8fn68wqa" path="res://Art/2DArt/[3] Hover.png" id="3_18has"]
+[ext_resource type="Texture2D" uid="uid://b1xburclqseg" path="res://Art/2DArt/[2] Clicked.png" id="4_dtvqh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bx144"]
+texture = ExtResource("2_spgmb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8mj7"]
+texture = ExtResource("3_18has")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8l6yn"]
+texture = ExtResource("4_dtvqh")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="StartUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="StartUI"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+offset_left = 22.0
+offset_top = 386.0
+offset_right = 429.0
+offset_bottom = 486.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.313726, 0.313726, 0.313726, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ekbim")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxTexture_bx144")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g8mj7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8l6yn")
+text = "Start"
+
+[node name="Start2" type="Button" parent="StartUI"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+offset_left = 22.0
+offset_top = 516.0
+offset_right = 429.0
+offset_bottom = 616.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.313726, 0.313726, 0.313726, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ekbim")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxTexture_bx144")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g8mj7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8l6yn")
+text = "Quit"

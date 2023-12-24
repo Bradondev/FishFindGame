@@ -17,13 +17,13 @@
 panorama = ExtResource("10_roqao")
 filter = false
 
-[sub_resource type="Sky" id="Sky_cy4rd"]
+[sub_resource type="Sky" id="Sky_e3io6"]
 sky_material = SubResource("PanoramaSkyMaterial_3thpo")
 process_mode = 1
 
 [sub_resource type="Environment" id="Environment_w48ql"]
 background_mode = 2
-sky = SubResource("Sky_cy4rd")
+sky = SubResource("Sky_e3io6")
 volumetric_fog_density = 0.205
 volumetric_fog_emission_energy = 635.88
 volumetric_fog_gi_inject = 5.35
@@ -36,6 +36,7 @@ transform = Transform3D(0.837681, 0, 0.54616, 0, 1, 0, -0.54616, 0, 0.837681, 0,
 
 [node name="Main_Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 2.39618, 8.27214)
+current = true
 script = ExtResource("2_udlyc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Main_Camera"]

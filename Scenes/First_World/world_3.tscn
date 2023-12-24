@@ -1,0 +1,85 @@
+[gd_scene load_steps=16 format=3 uid="uid://c6rtyt8gwuomd"]
+
+[ext_resource type="Script" path="res://code/Camera3D.gd" id="1_uq2gs"]
+[ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://Sounds/click-menu-app-147357.mp3" id="2_veqas"]
+[ext_resource type="PackedScene" uid="uid://bkv87da5hnjxx" path="res://Scenes/First_World/rain.tscn" id="3_dklxh"]
+[ext_resource type="Texture2D" uid="uid://badob7earuq45" path="res://Art/2DArt/Space Background.png" id="4_k7x3t"]
+[ext_resource type="AudioStream" uid="uid://bo6uk8xg7saml" path="res://Sounds/game-music-loop-7-145285.mp3" id="5_43r73"]
+[ext_resource type="PackedScene" uid="uid://c3our18h05umn" path="res://Art/level_3.tscn" id="6_yk244"]
+[ext_resource type="Script" path="res://world3.gd" id="7_f72qg"]
+[ext_resource type="Script" path="res://Scenes/First_World/FindItemList.gd" id="8_23ikx"]
+[ext_resource type="PackedScene" uid="uid://cpduu6l1x4e3l" path="res://Scenes/FindItem/find_object.tscn" id="9_16ptf"]
+[ext_resource type="Texture2D" uid="uid://ddkt0ft32h0j5" path="res://Art/2DArt/FROG.png" id="10_frct5"]
+[ext_resource type="Texture2D" uid="uid://b15olp1efeeng" path="res://Art/2DArt/grayfrogFROG.png" id="11_hqorn"]
+[ext_resource type="PackedScene" uid="uid://cmx0eu1x0u6ho" path="res://Scenes/Ui/list_of_names.tscn" id="12_8pxxe"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3thpo"]
+panorama = ExtResource("4_k7x3t")
+filter = false
+
+[sub_resource type="Sky" id="Sky_cy4rd"]
+sky_material = SubResource("PanoramaSkyMaterial_3thpo")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_w48ql"]
+background_mode = 2
+sky = SubResource("Sky_cy4rd")
+volumetric_fog_density = 0.205
+volumetric_fog_emission_energy = 635.88
+volumetric_fog_gi_inject = 5.35
+volumetric_fog_detail_spread = 5.04538
+
+[node name="World_1" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.837681, 0, 0.54616, 0, 1, 0, -0.54616, 0, 0.837681, 0, 1.29997, 0.487941)
+
+[node name="Main_Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 2.39618, 8.27214)
+script = ExtResource("1_uq2gs")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Main_Camera"]
+stream = ExtResource("2_veqas")
+volume_db = 0.35
+pitch_scale = 2.0
+
+[node name="Node3D" parent="." instance=ExtResource("3_dklxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.671488, 2.43399, 0.366191)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w48ql")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_43r73")
+volume_db = -10.0
+autoplay = true
+
+[node name="Level3" parent="." instance=ExtResource("6_yk244")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.494892, -1.21459, -0.0750952)
+script = ExtResource("7_f72qg")
+
+[node name="FindItemList" type="Node3D" parent="Level3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85945, 0, -9.39037)
+script = ExtResource("8_23ikx")
+
+[node name="Frog" parent="Level3/FindItemList" instance=ExtResource("9_16ptf")]
+transform = Transform3D(-1.85295, -1.81884, -0.2372, 1.37096, -2.45829, 0.1755, -1.92017, 6.37949e-07, 0.354199, 1.03691, -0.918306, 9.55754)
+Name = "Blue frog"
+
+[node name="Frog2" parent="Level3/FindItemList" instance=ExtResource("9_16ptf")]
+transform = Transform3D(-2.72948, -1.17124, -0.0736401, -1.13171, 2.82482, -0.0305327, 0.518777, 1.60627e-06, -0.454055, 1.38901, 1.06124, 9.25508)
+texture = ExtResource("10_frct5")
+Name = "Green frog"
+
+[node name="Frog3" parent="Level3/FindItemList" instance=ExtResource("9_16ptf")]
+transform = Transform3D(2.12154, -1.82271e-06, 0.325942, -1.75048, 1.72696, 0.269047, -1.19786, -2.52368, 0.184109, 1.59221, 1.57993, 8.73782)
+texture = ExtResource("11_hqorn")
+Name = "Gray frog"
+
+[node name="ListOfNames" parent="Level3" instance=ExtResource("12_8pxxe")]
+
+[connection signal="AddToList" from="Level3/FindItemList" to="Level3/ListOfNames/ListOfNames" method="_on_find_item_list_add_to_list"]
+[connection signal="CreateArraryForObjectsForUi" from="Level3/FindItemList" to="Level3/ListOfNames/ListOfNames" method="_on_find_item_list_create_arrary_for_objects_for_ui"]
+
+[editable path="Level3/ListOfNames"]

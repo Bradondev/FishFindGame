@@ -1,20 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6rtyt8gwuomd"]
+[gd_scene load_steps=17 format=3 uid="uid://b03yfa23tx76d"]
 
 [ext_resource type="Script" path="res://code/Camera3D.gd" id="1_7s71v"]
 [ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://Sounds/click-menu-app-147357.mp3" id="2_k13iu"]
-[ext_resource type="Texture2D" uid="uid://badob7earuq45" path="res://Art/2DArt/Space Background.png" id="4_0ykiw"]
+[ext_resource type="Script" path="res://code/world_1.gd" id="4_td8at"]
 [ext_resource type="PackedScene" uid="uid://cmx0eu1x0u6ho" path="res://Scenes/Ui/list_of_names.tscn" id="5_27p28"]
+[ext_resource type="PackedScene" uid="uid://iabkr7ttk67w" path="res://Scenes/Levels/level_2.tscn" id="6_d123t"]
 [ext_resource type="Script" path="res://Scenes/First_World/FindItemList.gd" id="6_ef1wv"]
 [ext_resource type="PackedScene" uid="uid://cpduu6l1x4e3l" path="res://Scenes/FindItem/find_object.tscn" id="7_dnn5t"]
-[ext_resource type="PackedScene" uid="uid://c3our18h05umn" path="res://Art/level_3.tscn" id="8_cngut"]
 [ext_resource type="Texture2D" uid="uid://ddkt0ft32h0j5" path="res://Art/2DArt/FROG.png" id="8_xeqp8"]
-[ext_resource type="Script" path="res://world3.gd" id="9_axgwh"]
 [ext_resource type="Texture2D" uid="uid://b15olp1efeeng" path="res://Art/2DArt/grayfrogFROG.png" id="9_ljn6i"]
 [ext_resource type="PackedScene" uid="uid://bkv87da5hnjxx" path="res://Scenes/First_World/rain.tscn" id="10_ofbyk"]
+[ext_resource type="Texture2D" uid="uid://d2howgt1pq7it" path="res://Art/2DArt/demo03_PixelSky.png" id="11_q1tb6"]
 [ext_resource type="AudioStream" uid="uid://bo6uk8xg7saml" path="res://Sounds/game-music-loop-7-145285.mp3" id="12_tfx71"]
+[ext_resource type="Texture2D" uid="uid://bayns8gnejk0i" path="res://Art/2DArt/pinkFROG.png" id="13_lw5ew"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3thpo"]
-panorama = ExtResource("4_0ykiw")
+panorama = ExtResource("11_q1tb6")
 filter = false
 
 [sub_resource type="Sky" id="Sky_cy4rd"]
@@ -35,7 +36,7 @@ volumetric_fog_detail_spread = 5.04538
 transform = Transform3D(0.837681, 0, 0.54616, 0, 1, 0, -0.54616, 0, 0.837681, 0, 1.29997, 0.487941)
 
 [node name="Main_Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 2.39618, 8.27214)
+transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 3.54652, 8.27214)
 script = ExtResource("1_7s71v")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Main_Camera"]
@@ -45,7 +46,6 @@ pitch_scale = 2.0
 
 [node name="Node3D" parent="." instance=ExtResource("10_ofbyk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.671488, 2.43399, 0.366191)
-visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w48ql")
@@ -55,31 +55,36 @@ stream = ExtResource("12_tfx71")
 volume_db = -10.0
 autoplay = true
 
-[node name="Level3" parent="." instance=ExtResource("8_cngut")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.494892, -1.21459, -0.0750952)
-script = ExtResource("9_axgwh")
+[node name="level2" parent="." instance=ExtResource("6_d123t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47, 1.86)
+script = ExtResource("4_td8at")
 
-[node name="FindItemList" type="Node3D" parent="Level3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85945, 0, -9.39037)
+[node name="ListOfNames" parent="level2" instance=ExtResource("5_27p28")]
+
+[node name="FindItemList" type="Node3D" parent="level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99933, 0, -1.01323)
 script = ExtResource("6_ef1wv")
 
-[node name="Frog" parent="Level3/FindItemList" instance=ExtResource("7_dnn5t")]
-transform = Transform3D(-1.85295, -1.81884, -0.2372, 1.37096, -2.45829, 0.1755, -1.92017, -3.64542e-07, 0.354199, 1.03691, -0.918306, 9.55754)
+[node name="Frog" parent="level2/FindItemList" instance=ExtResource("7_dnn5t")]
+transform = Transform3D(2.30498, 0, 0.295066, 0, 3.058, 0, -1.92017, 0, 0.354199, -1.65875, 0.333979, 0.489833)
 Name = "Blue frog"
 
-[node name="Frog2" parent="Level3/FindItemList" instance=ExtResource("7_dnn5t")]
-transform = Transform3D(-2.72948, -1.17123, -0.07364, -1.13171, 2.82482, -0.0305328, 0.518777, 6.83516e-08, -0.454055, 1.38901, 1.06124, 9.25508)
+[node name="Frog2" parent="level2/FindItemList" instance=ExtResource("7_dnn5t")]
+transform = Transform3D(2.99351, 0, -0.0303037, 0, 3.058, 0, 0.197204, 0, 0.460003, 4.16318, 0.284988, -0.885354)
 texture = ExtResource("8_xeqp8")
 Name = "Green frog"
 
-[node name="Frog3" parent="Level3/FindItemList" instance=ExtResource("7_dnn5t")]
-transform = Transform3D(2.12154, -1.82271e-07, 0.325942, -1.75048, 1.72696, 0.269047, -1.19786, -2.52368, 0.18411, 1.59221, 1.57993, 8.73782)
+[node name="Frog3" parent="level2/FindItemList" instance=ExtResource("7_dnn5t")]
+transform = Transform3D(2.12154, 0, 0.325942, 0, 3.058, 0, -2.1211, 0, 0.32601, -0.0725107, -1.48002, 4.54836)
 texture = ExtResource("9_ljn6i")
 Name = "Gray frog"
 
-[node name="ListOfNames" parent="Level3" instance=ExtResource("5_27p28")]
+[node name="Frog4" parent="level2/FindItemList" instance=ExtResource("7_dnn5t")]
+transform = Transform3D(0.0430728, -3.03855, 0.0514911, 0.380056, 0.344372, 0.454329, -2.97552, 5.46813e-07, 0.0587758, 3.5695, -1.20237, 3.64653)
+texture = ExtResource("13_lw5ew")
+Name = "pink  frog"
 
-[connection signal="AddToList" from="Level3/FindItemList" to="Level3/ListOfNames/ListOfNames" method="_on_find_item_list_add_to_list"]
-[connection signal="CreateArraryForObjectsForUi" from="Level3/FindItemList" to="Level3/ListOfNames/ListOfNames" method="_on_find_item_list_create_arrary_for_objects_for_ui"]
+[connection signal="AddToList" from="level2/FindItemList" to="level2/ListOfNames/ListOfNames" method="_on_find_item_list_add_to_list"]
+[connection signal="CreateArraryForObjectsForUi" from="level2/FindItemList" to="level2/ListOfNames/ListOfNames" method="_on_find_item_list_create_arrary_for_objects_for_ui"]
 
-[editable path="Level3/ListOfNames"]
+[editable path="level2/ListOfNames"]
