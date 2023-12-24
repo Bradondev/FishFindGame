@@ -1,6 +1,6 @@
 extends Node3D
 
-var scenes_paths = ["res://Scenes/First_World/world_1.tscn", "res://Scenes/First_World/world_2.tscn"]
+var scenes_paths = ["res://Scenes/First_World/world_1.tscn", "res://Scenes/First_World/world_2.tscn","res://Scenes/First_World/world_3.tscn"]
 var ObjectsGetttingLookedFor
 var LengthOfList
 var current_scene
@@ -41,8 +41,11 @@ func _on_win_panel_next():
 	if current_scene == "World_1":
 		change_scene(scenes_paths[1])
 	if current_scene == "World_2":
-		change_scene(scenes_paths[0])
+		change_scene(scenes_paths[2])
+	if current_scene == "World_3":
+		change_scene("res://Scenes/First_World/FinalWin.tscn")
+	
 
 
 func _on_win_panel_menu():
-	change_scene("res://start_screen.tscn")
+	change_scene("res://Scenes/Levels/Startscreen.tscn")

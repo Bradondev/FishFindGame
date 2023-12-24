@@ -53,9 +53,10 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_g8mj7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8l6yn")
 text = "Start"
 
-[node name="Start2" type="Button" parent="StartUI"]
+[node name="Quit" type="Button" parent="StartUI"]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
 offset_left = 22.0
 offset_top = 516.0
 offset_right = 429.0

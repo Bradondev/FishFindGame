@@ -1,8 +1,71 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3our18h05umn"]
+[gd_scene load_steps=5 format=3 uid="uid://c3our18h05umn"]
 
 [ext_resource type="PackedScene" uid="uid://donmmb2h6l5bx" path="res://Art/3DModel/spaceRock.gltf" id="1_qavpb"]
+[ext_resource type="PackedScene" uid="uid://cpduu6l1x4e3l" path="res://Scenes/FindItem/find_object.tscn" id="1_qy5lq"]
+[ext_resource type="Texture2D" uid="uid://cuh2ih31va58s" path="res://Art/2DArt/Sprite-0005.png" id="2_p1wtn"]
+[ext_resource type="Texture2D" uid="uid://cbr0wnogfnhio" path="res://Art/2DArt/rock.png" id="3_wldbu"]
 
 [node name="Level3" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.466093, 0)
 
+[node name="Frog7" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(2.4759, -8.93476, 0, 8.71809, 2.53743, 0, 0, 0, 0.212521, -1.55019, 2.24541, -0.445042)
+texture = ExtResource("2_p1wtn")
+script = null
+
+[node name="Frog3" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(-4.4399, -5.00533, 0.00299294, 3.42353, -6.48873, 0.00780937, -0.042489, 0.207444, 0.316488, -0.396762, -1.04836, -0.0227482)
+texture = ExtResource("3_wldbu")
+script = null
+
+[node name="Frog" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(3, 0, 0, 0, 3.058, 0, 0, 0, 0.461, 0.0776144, 1.03237, -0.0155703)
+texture = ExtResource("3_wldbu")
+script = null
+
 [node name="default2" parent="." instance=ExtResource("1_qavpb")]
+
+[node name="Frog2" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(2.40191, -1.8322, 0, 1.79745, 2.44835, 0, 0, 0, 0.461, -0.776519, 0.694005, -0.0155703)
+texture = ExtResource("3_wldbu")
+script = null
+
+[node name="Frog4" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(2.40191, -1.8322, 0, 1.79745, 2.44835, 0, 0, 0, 0.461, -1.90201, 0.694005, -0.0155703)
+texture = ExtResource("2_p1wtn")
+script = null
+
+[node name="Frog5" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(2.40191, -1.8322, 0, 1.79745, 2.44835, 0, 0, 0, 0.461, -0.0863454, 1.88153, -0.0155703)
+texture = ExtResource("2_p1wtn")
+script = null
+
+[node name="Frog6" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(2.40191, -1.8322, 0, 1.79745, 2.44835, 0, 0, 0, 0.461, 2.55958, 0.195727, -0.445907)
+texture = ExtResource("2_p1wtn")
+script = null
+
+[node name="Frog8" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(-0.308233, 0.235123, 0.457188, 1.79745, 2.44835, -1.97549e-11, -2.38205, 1.81705, -0.0591593, -1.90201, 0.694005, -0.756324)
+texture = ExtResource("2_p1wtn")
+script = null
+
+[node name="Frog8" parent="Frog8" instance=ExtResource("1_qy5lq")]
+transform = Transform3D(-0.308233, 0.235123, 0.457188, 1.79745, 2.44835, -7.22819e-10, -2.38205, 1.81705, -0.0591593, -1.49559, 1.52773, 8.48663)
+texture = ExtResource("2_p1wtn")
+script = null
+
+[node name="Frog8" parent="Frog8/Frog8" instance=ExtResource("1_qy5lq")]
+transform = Transform3D(1.82807, -0.392507, 0.360704, 0.509324, 3.01227, 0.0135402, -2.32352, 0.351488, 0.286758, -0.289685, 0.0216688, 2.63351)
+texture = ExtResource("2_p1wtn")
+script = null
+
+[node name="Frog9" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(-1.46743, 2.59021, 0.0959123, -2.61311, -1.48841, -0.0305588, 0.135351, -0.65333, 0.449875, 0.0776144, 0.263728, -0.956064)
+texture = ExtResource("3_wldbu")
+script = null
+
+[node name="Frog10" parent="." instance=ExtResource("1_qy5lq")]
+transform = Transform3D(-1.46743, 2.59021, 0.0959123, -0.174092, -0.824478, 0.443122, 2.61081, 1.40087, 0.0834563, 0.0776144, 0.263728, 1.01897)
+texture = ExtResource("3_wldbu")
+script = null

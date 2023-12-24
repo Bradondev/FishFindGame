@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://Sounds/click-menu-app-147357.mp3" id="2_ssbn1"]
 [ext_resource type="Texture2D" uid="uid://d2howgt1pq7it" path="res://Art/2DArt/demo03_PixelSky.png" id="3_3nt1r"]
 [ext_resource type="Texture2D" uid="uid://dmo4gropuejeo" path="res://Art/2DArt/demo02_PixelSky.png" id="3_h4jwf"]
-[ext_resource type="PackedScene" path="res://level_2.tscn" id="4_tl61x"]
+[ext_resource type="PackedScene" uid="uid://iabkr7ttk67w" path="res://level_2.tscn" id="4_tl61x"]
 [ext_resource type="PackedScene" uid="uid://c3our18h05umn" path="res://Art/level_3.tscn" id="5_upmnb"]
 [ext_resource type="PackedScene" uid="uid://cl2a725i6pww2" path="res://Art/3DModel/Level1.tscn" id="6_mkt5w"]
 [ext_resource type="Texture2D" uid="uid://badob7earuq45" path="res://Art/2DArt/Space Background.png" id="8_orxl0"]
@@ -268,3 +268,8 @@ libraries = {
 stream = ExtResource("10_t0ila")
 volume_db = -10.0
 autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/StartUI/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartUI/Quit" to="." method="_on_quit_pressed"]
+
+[editable path="CanvasLayer"]

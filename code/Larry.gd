@@ -23,3 +23,5 @@ func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 			Found = true
 			print("finded")
 			emit_signal("CheckIfAllObjectsWereFound")
+func LoopDance():
+	$AnimationPlayer.play("dance_loop")
